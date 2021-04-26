@@ -27,6 +27,7 @@ module.exports = {
     })
       .then(() => queryInterface.addConstraint('Banks', ['balance'], {
         type: 'check',
+        fields: ['balance'],
         where: {
           balance: {
             [ Sequelize.Op.gte ]: 0,
