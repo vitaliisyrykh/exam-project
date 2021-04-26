@@ -1,6 +1,7 @@
 const env = process.env.NODE_ENV || 'development';
-const serverIP = 'localhost';
-const serverPort = env === 'production' ? 3000 : 9632;
+const hostName = 'localhost';
+const serverPort = 3000;
+
 export default {
   CUSTOMER: 'customer',
   CREATOR: 'creator',
@@ -15,11 +16,11 @@ export default {
   OFFER_STATUS_PENDING: 'pending',
   STATIC_IMAGES_PATH: '/staticImages/',
   ANONYM_IMAGE_PATH: '/staticImages/anonym.png',
-  BASE_URL: `http://${ serverIP }:${ serverPort }/`,
+  BASE_URL: `http://${ hostName }:${ serverPort }/`,
   ACCESS_TOKEN: 'accessToken',
   publicURL: env === 'production'
-    ? `http://${ serverIP }:80/images/`
-    : `http://${ serverIP }:${ serverPort }/public/images/`,
+    ? `http://${ hostName }:80/images/`
+    : `http://${ hostName }:${ serverPort }/public/images/`,
   NORMAL_PREVIEW_CHAT_MODE: 'NORMAL_PREVIEW_CHAT_MODE',
   FAVORITE_PREVIEW_CHAT_MODE: 'FAVORITE_PREVIEW_CHAT_MODE',
   BLOCKED_PREVIEW_CHAT_MODE: 'BLOCKED_PREVIEW_CHAT_MODE',
