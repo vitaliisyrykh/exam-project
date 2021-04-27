@@ -5,7 +5,7 @@
       "server": "localhost",
       "port": 5432,
       "driver": "PostgreSQL",
-      "name": "db_sql",
+      "name": "q1",
       "database": "todo-dev",
       "username": "postgres",
       "password": "password"

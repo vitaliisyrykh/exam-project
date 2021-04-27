@@ -53,7 +53,7 @@ module.exports = {
         defaultValue: 0,
       },
     })
-      .then(() => queryInterface.addConstraint('Users', ['balance'], {
+      .then(() => queryInterface.addConstraint('Users', {
         type: 'check',
         fields: ['balance'],
         where: {

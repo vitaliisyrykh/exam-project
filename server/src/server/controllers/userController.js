@@ -105,8 +105,8 @@ module.exports.changeMark = async (req, res, next) => {
 };
 
 module.exports.payment = async (req, res, next) => {
+  const transaction= await db.sequelize.transaction();
   try {
-    const transaction= await db.sequelize.transaction();
     await bankQueries.updateBankBalance({
         balance: db.sequelize.literal(`
                 CASE

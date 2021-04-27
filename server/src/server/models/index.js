@@ -21,12 +21,12 @@ fs.readdirSync(__dirname)
       file.indexOf('.') !== 0 && file !== basename && file.slice(-3) === '.js'
     );
   })
-  .forEach((file) => {
-    const model = sequelize.import(path.join(__dirname, file));
-    db[ model.name ] = model;
+  .forEach(file => {
+    const model = require(path.join(__dirname, file));
+    db[model.name] = model;
   });
 
-db['Contests'].belongsTo(db['Users'], {
+db['Contests'].belongsTo(db['User'], {
   foreignKey: 'userId',
   sourceKey: 'id',
 });
@@ -35,18 +35,18 @@ db['Contests'].hasMany(db['Offers'], {
   targetKey: 'id',
 });
 
-db['Users'].hasMany(db['Offers'], { foreignKey: 'userId', targetKey: 'id' });
-db['Users'].hasMany(db['Contests'], { foreignKey: 'userId', targetKey: 'id' });
-db['Users'].hasMany(db['Ratings'], { foreignKey: 'userId', targetKey: 'id' });
+db['User'].hasMany(db['Offers'], { foreignKey: 'userId', targetKey: 'id' });
+db['User'].hasMany(db['Contests'], { foreignKey: 'userId', targetKey: 'id' });
+db['User'].hasMany(db['Ratings'], { foreignKey: 'userId', targetKey: 'id' });
 
-db['Offers'].belongsTo(db['Users'], { foreignKey: 'userId', sourceKey: 'id' });
+db['Offers'].belongsTo(db['User'], { foreignKey: 'userId', sourceKey: 'id' });
 db['Offers'].belongsTo(db['Contests'], {
   foreignKey: 'contestId',
   sourceKey: 'id',
 });
 db['Offers'].hasOne(db['Ratings'], { foreignKey: 'offerId', targetKey: 'id' });
 
-db['Ratings'].belongsTo(db['Users'], { foreignKey: 'userId', targetKey: 'id' });
+db['Ratings'].belongsTo(db['User'], { foreignKey: 'userId', targetKey: 'id' });
 db['Ratings'].belongsTo(db['Offers'], {
   foreignKey: 'offerId',
   targetKey: 'id',

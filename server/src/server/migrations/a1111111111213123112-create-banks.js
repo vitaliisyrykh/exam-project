@@ -1,9 +1,9 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Banks', {
+    return queryInterface.createTable('CreditCards', {
       cardNumber: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(16),
         allowNull: false,
         primaryKey: true,
       },
@@ -12,11 +12,11 @@ module.exports = {
         allowNull: false,
       },
       expiry: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(5),
         allowNull: false,
       },
       cvc: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(3),
         allowNull: false,
       },
       balance: {
@@ -25,7 +25,7 @@ module.exports = {
         defaultValue: 0,
       },
     })
-      .then(() => queryInterface.addConstraint('Banks', ['balance'], {
+      .then(() => queryInterface.addConstraint('CreaditCards', {
         type: 'check',
         fields: ['balance'],
         where: {
@@ -36,6 +36,6 @@ module.exports = {
       }));
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Banks');
+    return queryInterface.dropTable('CreaditCards');
   },
 };

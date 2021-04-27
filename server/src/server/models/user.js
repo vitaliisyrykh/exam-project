@@ -1,15 +1,18 @@
 'use strict';
+const { Model } = require('sequelize');
+const bcrypt = require('bcrypt');
+const { SALT_ROUNDS } = require('../../constants');
 
 module.exports = (sequelize, DataTypes) => {
-  const User = sequelize.define(
-    'Users',
+  class User extends Model {
+    static associate (models) {}
+
+    async comparePassword (plainPassword) {
+      return bcrypt.compare(plainPassword, this.getDataValue('password'));
+    }
+  }
+  User.init(
     {
-      id: {
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
-        type: DataTypes.INTEGER,
-      },
       firstName: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -23,8 +26,17 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
       password: {
-        type: DataTypes.STRING,
+        field: 'passwordHash',
+        type: DataTypes.TEXT,
         allowNull: false,
+        set (password) {
+          bcrypt.hash(password, SALT_ROUNDS, (err, hash) => {
+            if (err) {
+              throw err;
+            }
+            this.setDataValue('password', hash);
+          });
+        },
       },
       email: {
         type: DataTypes.STRING,
@@ -33,8 +45,6 @@ module.exports = (sequelize, DataTypes) => {
       },
       avatar: {
         type: DataTypes.STRING,
-        allowNull: false,
-        defaultValue: 'anon.png',
       },
       role: {
         type: DataTypes.ENUM('customer', 'creator'),
@@ -50,7 +60,6 @@ module.exports = (sequelize, DataTypes) => {
       },
       accessToken: {
         type: DataTypes.TEXT,
-        allowNull: true,
       },
       rating: {
         type: DataTypes.FLOAT,
@@ -59,13 +68,9 @@ module.exports = (sequelize, DataTypes) => {
       },
     },
     {
-      timestamps: false,
+      sequelize,
+      modelName: 'User',
     }
   );
-
-  User.associate = function (models) {
-    /* TODO: REfactor */
-  };
-
   return User;
 };
