@@ -1,6 +1,7 @@
 const http = require('http');
 const express = require('express');
 const cors = require('cors');
+require('dotenv').config();
 require('./server/dbMongo/mongoose');
 const router = require('./server/router');
 const controller = require('./socketInit');

@@ -1,13 +1,31 @@
 'use strict';
+const { Model } = require('sequelize');
+const bcrypt = require('bcrypt');
+const { SALT_ROUNDS } = -require('../../constants');
 
 module.exports = (sequelize, DataTypes) => {
-  const User = sequelize.define('Users', {
-      id: {
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
-        type: DataTypes.INTEGER,
-      },
+  class User extends Model {
+    static associate ({ Offers, Contests, Ratings }) {
+      User.hasMany(Offers, {
+        foreignKey: 'userId',
+        targetKey: 'id',
+      });
+      User.hasMany(Contests, {
+        foreignKey: 'userId',
+        targetKey: 'id',
+      });
+      User.hasMany(Ratings, {
+        foreignKey: 'userId',
+        targetKey: 'id',
+      });
+    }
+
+    async comparePassword (password) {
+      return bcrypt.compare(password, this.getDataValue('password'));
+    }
+  }
+  User.init(
+    {
       firstName: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -23,6 +41,14 @@ module.exports = (sequelize, DataTypes) => {
       password: {
         type: DataTypes.STRING,
         allowNull: false,
+        set (password) {
+          bcrypt.hash(password, SALT_ROUNDS, (err, hashedPass) => {
+            if (err) {
+              throw err;
+            }
+            this.setDataValue('password', hashedPass);
+          });
+        },
       },
       email: {
         type: DataTypes.STRING,
@@ -31,8 +57,6 @@ module.exports = (sequelize, DataTypes) => {
       },
       avatar: {
         type: DataTypes.STRING,
-        allowNull: false,
-        defaultValue: 'anon.png',
       },
       role: {
         type: DataTypes.ENUM('customer', 'creator'),
@@ -46,10 +70,6 @@ module.exports = (sequelize, DataTypes) => {
           min: 0,
         },
       },
-      accessToken: {
-        type: DataTypes.TEXT,
-        allowNull: true,
-      },
       rating: {
         type: DataTypes.FLOAT,
         allowNull: false,
@@ -57,12 +77,9 @@ module.exports = (sequelize, DataTypes) => {
       },
     },
     {
-      timestamps: false,
-    });
-
-  User.associate = function (models) {
-    /* TODO: Refactor associations */
-  };
-
+      sequelize,
+      modelName: 'User',
+    }
+  );
   return User;
 };

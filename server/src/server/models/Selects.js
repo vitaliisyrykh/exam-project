@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = (sequelize, DataTypes) => {
-  const SelectBox = sequelize.define('Selects', {
+  const Selects = sequelize.define('Selects', {
       type: {
         allowNull: false,
         primaryKey: true,
@@ -17,5 +17,5 @@ module.exports = (sequelize, DataTypes) => {
       timestamps: false,
     });
 
-  return SelectBox;
+  return Selects;
 };

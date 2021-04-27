@@ -31,8 +31,6 @@ module.exports = {
       },
       avatar: {
         type: Sequelize.STRING,
-        allowNull: false,
-        defaultValue: 'anon.png',
       },
       role: {
         type: Sequelize.ENUM('customer', 'creator'),
@@ -43,18 +41,15 @@ module.exports = {
         allowNull: false,
         defaultValue: 0,
       },
-      accessToken: {
-        type: Sequelize.TEXT,
-        allowNull: true,
-      },
       rating: {
         type: Sequelize.FLOAT,
         allowNull: false,
         defaultValue: 0,
       },
     })
-      .then(() => queryInterface.addConstraint('Users', ['balance'], {
+      .then(() => queryInterface.addConstraint('Users', {
         type: 'check',
+        fields: ['balance'],
         where: {
           balance: {
             [ Sequelize.Op.gte ]: 0,
