@@ -10,7 +10,7 @@ COPY package*.json ./
 
 COPY . .
 
-EXPOSE 5000
+EXPOSE 4000
 
 RUN npm install
 CMD npm start
