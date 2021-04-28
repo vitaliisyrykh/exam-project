@@ -4,12 +4,10 @@ const bcrypt = require('bcrypt');
 const { SALT_ROUNDS } = require('../../constants');
 
 async function hashPassword (user, options) {
-  console.log('hook', user, '|||', options);
   if (user.changed('password')) {
     const { password } = user;
     const hash = await bcrypt.hash(password, SALT_ROUNDS);
     user.password = hash;
-    console.log(user.password);
   }
 }
 

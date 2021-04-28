@@ -268,7 +268,6 @@ module.exports.getCustomersContests = (req, res, next) => {
     .then(contests => {
       contests.forEach(
         contest => {
-          console.log(contest)
           contest.dataValues.count = contest.dataValues.Offers.length
         }
       );

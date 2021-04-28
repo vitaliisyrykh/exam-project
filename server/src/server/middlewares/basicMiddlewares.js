@@ -19,8 +19,6 @@ module.exports.parseBody = (req, res, next) => {
 module.exports.canGetContest = async (req, res, next) => {
   let result = null;
   try {
-    console.log('ID',req.headers.contestid)
-    console.log('ID',req.tokenData.userId)
     if (req.tokenData.role === CONSTANTS.CUSTOMER) {
       result = await bd.Contest.findOne({
         where: { id: req.headers.contestid, userId: req.tokenData.userId },
@@ -38,8 +36,6 @@ module.exports.canGetContest = async (req, res, next) => {
         },
       });
     }
-    console.log(req.tokenData.role)
-    console.log(result)
     !!result ? next() : next(new RightsError());
   } catch (e) {
     console.log(e)

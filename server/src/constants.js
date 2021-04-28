@@ -4,13 +4,20 @@ const {
     SQUADHELP_BANK_NAME,
     SQUADHELP_BANK_CVC,
     SQUADHELP_BANK_EXPIRY,
+    REFRESH_TOKEN_SECRET,
+    ACCESS_TOKEN_SECRET,
+    ACCESS_TOKEN_TIME,
+    REFRESH_TOKEN_TIME,
   },
 } = process;
-console.log(SQUADHELP_BANK_NUMBER)
+
 module.exports = {
-  JWT_SECRET: 'asdasdasd4as5d4as8d7a8sd4as65d4a8sd7asd4as56d4',
-  ACCESS_TOKEN_TIME: 60 * 60,
-  
+  REFRESH_TOKEN_SECRET,
+  ACCESS_TOKEN_SECRET,
+  ACCESS_TOKEN_TIME,
+  REFRESH_TOKEN_TIME,
+
+  MAX_DEVICES_AMOUNT: 3,
   SALT_ROUNDS: 5,
 
   SQUADHELP_BANK_NUMBER,
@@ -20,7 +27,7 @@ module.exports = {
 
   CUSTOMER: 'customer',
   CREATOR: 'creator',
-  
+
   CREATOR_ENTRIES: 'creator_entries',
 
   CONTESTS_DEFAULT_DIR: 'public/contestFiles/',
@@ -36,7 +43,7 @@ module.exports = {
   OFFER_STATUS_PENDING: 'pending',
   OFFER_STATUS_REJECTED: 'rejected',
   OFFER_STATUS_WON: 'won',
-  
+
   FILES_PATH: 'public/',
   SOCKET_CONNECTION: 'connection',
   SOCKET_SUBSCRIBE: 'subscribe',

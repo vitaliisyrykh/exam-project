@@ -38,11 +38,11 @@ module.exports.registration = async (req, res, next) => {
       firstName: newUser.firstName,
       userId: newUser.id,
       role: newUser.role,
+      email: newUser.email,
       lastName: newUser.lastName,
       avatar: newUser.avatar,
       displayName: newUser.displayName,
       balance: newUser.balance,
-      email: newUser.email,
       rating: newUser.rating,
     }, CONSTANTS.JWT_SECRET, { expiresIn: CONSTANTS.ACCESS_TOKEN_TIME });
     res.send({ token: accessToken });
