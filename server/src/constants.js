@@ -20,17 +20,23 @@ module.exports = {
 
   CUSTOMER: 'customer',
   CREATOR: 'creator',
+  
   CREATOR_ENTRIES: 'creator_entries',
-  CONTEST_STATUS_ACTIVE: 'active',
-  CONTEST_STATUS_FINISHED: 'finished',
-  CONTEST_STATUS_PENDING: 'pending',
+
   CONTESTS_DEFAULT_DIR: 'public/contestFiles/',
+
   NAME_CONTEST: 'name',
   LOGO_CONTEST: 'logo',
   TAGLINE_CONTEST: 'tagline',
+
+  CONTEST_STATUS_ACTIVE: 'active',
+  CONTEST_STATUS_FINISHED: 'finished',
+  CONTEST_STATUS_PENDING: 'pending',
+
   OFFER_STATUS_PENDING: 'pending',
   OFFER_STATUS_REJECTED: 'rejected',
   OFFER_STATUS_WON: 'won',
+  
   FILES_PATH: 'public/',
   SOCKET_CONNECTION: 'connection',
   SOCKET_SUBSCRIBE: 'subscribe',

@@ -15,7 +15,7 @@ const {
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert(
-      'Banks',
+      'CreditCards',
       [
         {
           cardNumber: SQUADHELP_BANK_NUMBER,

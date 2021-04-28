@@ -24,7 +24,6 @@ module.exports.login = async (req, res, next) => {
       email: foundUser.email,
       rating: foundUser.rating,
     }, CONSTANTS.JWT_SECRET, { expiresIn: CONSTANTS.ACCESS_TOKEN_TIME });
-    await userQueries.updateUser({ accessToken }, foundUser.id);
     res.send({ token: accessToken });
   } catch (err) {
     next(err);
@@ -46,7 +45,6 @@ module.exports.registration = async (req, res, next) => {
       email: newUser.email,
       rating: newUser.rating,
     }, CONSTANTS.JWT_SECRET, { expiresIn: CONSTANTS.ACCESS_TOKEN_TIME });
-    await userQueries.updateUser({ accessToken }, newUser.id);
     res.send({ token: accessToken });
   } catch (err) {
     if (err.name === 'SequelizeUniqueConstraintError') {
@@ -79,10 +77,10 @@ module.exports.changeMark = async (req, res, next) => {
       { isolationLevel: db.Sequelize.Transaction.ISOLATION_LEVELS.READ_UNCOMMITTED });
     const query = getQuery(offerId, userId, mark, isFirst, transaction);
     await query();
-    const offersArray = await db.Ratings.findAll({
+    const offersArray = await db.Rating.findAll({
       include: [
         {
-          model: db.Offers,
+          model: db.Offer,
           required: true,
           where: { userId: creatorId },
         },
@@ -119,7 +117,7 @@ module.exports.payment = async (req, res, next) => {
       },
       {
         cardNumber: {
-          [ db.sequelize.Op.in ]: [
+          [ db.Sequelize.Op.in ]: [
             CONSTANTS.SQUADHELP_BANK_NUMBER,
             req.body.number.replace(/ /g, ''),
           ],
@@ -140,10 +138,11 @@ module.exports.payment = async (req, res, next) => {
         prize,
       });
     });
-    await db.Contests.bulkCreate(req.body.contests, transaction);
+    await db.Contest.bulkCreate(req.body.contests, transaction);
     transaction.commit();
     res.send();
   } catch (err) {
+    console.log(err)
     transaction.rollback();
     next(err);
   }

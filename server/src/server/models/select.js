@@ -13,14 +13,15 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
       },
       describe: {
-        allowNull: false,
-        primaryKey: true,
         type: DataTypes.STRING,
+        primaryKey: true,
+        allowNull: false,
       },
     },
     {
       sequelize,
       modelName: 'Select',
+      timestamps: false,
     }
   );
   return Select;

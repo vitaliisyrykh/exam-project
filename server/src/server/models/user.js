@@ -3,9 +3,32 @@ const { Model } = require('sequelize');
 const bcrypt = require('bcrypt');
 const { SALT_ROUNDS } = require('../../constants');
 
+async function hashPassword (user, options) {
+  console.log('hook', user, '|||', options);
+  if (user.changed('password')) {
+    const { password } = user;
+    const hash = await bcrypt.hash(password, SALT_ROUNDS);
+    user.password = hash;
+    console.log(user.password);
+  }
+}
+
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
-    static associate (models) {}
+    static associate (models) {
+      User.hasMany(models.Offer, {
+        foreignKey: 'userId',
+        targetKey: 'id',
+      });
+      User.hasMany(models.Contest, {
+        foreignKey: 'userId',
+        targetKey: 'id',
+      });
+      User.hasMany(models.Rating, {
+        foreignKey: 'userId',
+        targetKey: 'id',
+      });
+    }
 
     async comparePassword (plainPassword) {
       return bcrypt.compare(plainPassword, this.getDataValue('password'));
@@ -29,14 +52,6 @@ module.exports = (sequelize, DataTypes) => {
         field: 'passwordHash',
         type: DataTypes.TEXT,
         allowNull: false,
-        set (password) {
-          bcrypt.hash(password, SALT_ROUNDS, (err, hash) => {
-            if (err) {
-              throw err;
-            }
-            this.setDataValue('password', hash);
-          });
-        },
       },
       email: {
         type: DataTypes.STRING,
@@ -58,9 +73,6 @@ module.exports = (sequelize, DataTypes) => {
           min: 0,
         },
       },
-      accessToken: {
-        type: DataTypes.TEXT,
-      },
       rating: {
         type: DataTypes.FLOAT,
         allowNull: false,
@@ -72,5 +84,8 @@ module.exports = (sequelize, DataTypes) => {
       modelName: 'User',
     }
   );
+  User.addHook('beforeCreate', hashPassword);
+  User.addHook('beforeUpdate', hashPassword);
+
   return User;
 };

@@ -16,7 +16,7 @@ module.exports = {
         allowNull: false,
         primaryKey: true,
         references: {
-          model: 'User',
+          model: 'Users',
           key: 'id',
         },
       },
