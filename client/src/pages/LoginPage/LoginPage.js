@@ -7,30 +7,30 @@ import { connect } from 'react-redux';
 import { clearErrorSignUpAndLogin } from '../../actions/actionCreator';
 import CONSTANTS from '../../constants';
 
-const LoginPage = (props) => {
+const LoginPage = props => {
   const changeRoute = () => {
     props.history.replace('/');
   };
   return (
-    <div className={ styles.mainContainer }>
-      <div className={ styles.loginContainer }>
-        <div className={ styles.headerSignUpPage }>
-          <Logo src={ `${ CONSTANTS.STATIC_IMAGES_PATH }logo.png` } alt="logo"/>
-          <div className={ styles.linkLoginContainer }>
-            <Link to='/registration'
-                  style={ {textDecoration: 'none'} }><span>Signup</span></Link>
-          </div>
+    <div className={styles.mainContainer}>
+      <div className={styles.loginContainer}>
+        <div className={styles.headerSignUpPage}>
+          <Logo src={`${CONSTANTS.STATIC_IMAGES_PATH}logo.png`} alt='logo' />
+          <Link to='/registration' style={{ textDecoration: 'none' }}>
+            <div className={styles.linkLoginContainer}>
+              <span>Signup</span>
+            </div>
+          </Link>
         </div>
-        <div className={ styles.loginFormContainer }>
-          <LoginForm changeRoute={ changeRoute }/>
+        <div className={styles.loginFormContainer}>
+          <LoginForm changeRoute={changeRoute} />
         </div>
       </div>
     </div>
   );
-
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
     clearError: () => dispatch(clearErrorSignUpAndLogin()),
   };
