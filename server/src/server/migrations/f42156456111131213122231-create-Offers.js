@@ -1,4 +1,7 @@
 'use strict';
+
+const { OFFER_STATUSES, ROLES } = require('../../constants');
+
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('Offers', {
@@ -12,7 +15,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: 'User',
+          model: 'Users',
           key: 'id',
         },
       },
@@ -26,20 +29,25 @@ module.exports = {
       },
       text: {
         type: Sequelize.STRING,
-        allowNull: true,
       },
       fileName: {
         type: Sequelize.STRING,
-        allowNull: true,
       },
       originalFileName: {
         type: Sequelize.STRING,
-        allowNull: true,
       },
       status: {
-        type: Sequelize.STRING,
-        allowNull: true,
-        defaultValue: 'pending',
+        type: Sequelize.ENUM(...Object.values(OFFER_STATUSES)),
+        defaultValue: OFFER_STATUSES.PENDING,
+        allowNull: false,
+      },
+      createdAt: {
+        type: Sequelize.DATE,
+        defaultValue: new Date(),
+      },
+      updatedAt: {
+        type: Sequelize.DATE,
+        defaultValue: new Date(),
       },
     });
   },

@@ -1,20 +1,20 @@
 'use strict';
 const { Model } = require('sequelize');
 const bcrypt = require('bcrypt');
-const { SALT_ROUNDS } = -require('../../constants');
+const { SALT_ROUNDS, ROLES } = require('../../constants');
 
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
-    static associate ({ Offers, Contests, Ratings }) {
-      User.hasMany(Offers, {
+    static associate ({ Offer, Contest, Rating }) {
+      User.hasMany(Offer, {
         foreignKey: 'userId',
         targetKey: 'id',
       });
-      User.hasMany(Contests, {
+      User.hasMany(Contest, {
         foreignKey: 'userId',
         targetKey: 'id',
       });
-      User.hasMany(Ratings, {
+      User.hasMany(Rating, {
         foreignKey: 'userId',
         targetKey: 'id',
       });
@@ -39,16 +39,17 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
       password: {
+        field: 'passwordHash',
         type: DataTypes.STRING,
         allowNull: false,
-        set (password) {
+        /* set (password) {
           bcrypt.hash(password, SALT_ROUNDS, (err, hashedPass) => {
             if (err) {
               throw err;
             }
             this.setDataValue('password', hashedPass);
-          });
-        },
+          }); 
+        } */
       },
       email: {
         type: DataTypes.STRING,
@@ -59,7 +60,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
       },
       role: {
-        type: DataTypes.ENUM('customer', 'creator'),
+        type: DataTypes.ENUM(...Object.values(ROLES)),
         allowNull: false,
       },
       balance: {
