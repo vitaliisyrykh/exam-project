@@ -3,9 +3,17 @@ const { Model } = require('sequelize');
 const bcrypt = require('bcrypt');
 const { SALT_ROUNDS, ROLES } = require('../../constants');
 
+async function hashPassword (user, options) {
+  if (user.changed('password')) {
+    const { password } = user;
+    const hashedPassword = await bcrypt.hash(password, SALT_ROUNDS);
+    user.password = hashedPassword;
+  }
+}
+
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
-    static associate ({ Offer, Contest, Rating }) {
+    static associate ({ Offer, Contest, Rating, RefreshToken }) {
       User.hasMany(Offer, {
         foreignKey: 'userId',
         targetKey: 'id',
@@ -17,6 +25,9 @@ module.exports = (sequelize, DataTypes) => {
       User.hasMany(Rating, {
         foreignKey: 'userId',
         targetKey: 'id',
+      });
+      User.hasMany(RefreshToken, {
+        foreignKey: 'userId',
       });
     }
 
@@ -43,11 +54,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
         /* set (password) {
-          bcrypt.hash(password, SALT_ROUNDS, (err, hashedPass) => {
-            if (err) {
-              throw err;
-            }
-            this.setDataValue('password', hashedPass);
+          
           }); 
         } */
       },
@@ -82,5 +89,9 @@ module.exports = (sequelize, DataTypes) => {
       modelName: 'User',
     }
   );
+
+  User.beforeCreate(hashPassword);
+  User.beforeUpdate(hashPassword);
+
   return User;
 };
