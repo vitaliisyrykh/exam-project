@@ -11,7 +11,7 @@ const authRouter = express.Router();
 */
 
 authRouter.post('/sign-in', AuthController.signIn); // login
-// authRouter.post('/sign-up'); // registration
-// authRouter.post('/refresh'); // refresh token pair
+authRouter.post('/sign-up', AuthController.signUp); // registration
+authRouter.post('/refresh', AuthController.refreshToken); // refresh token pair
 
 module.exports = authRouter;
