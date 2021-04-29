@@ -33,9 +33,6 @@ services:
 
   mongo-dev:
     image: mongo:3.6
-    #     environment:
-    #      - MONGO_INITDB_ROOT_USERNAME=mongo
-    #      - MONGO_INITDB_ROOT_PASSWORD=password
     ports:
       - "27017:27017"
 
