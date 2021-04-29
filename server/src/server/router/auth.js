@@ -1,9 +1,9 @@
 const authRouter = require('express').Router();
 const AuthController = require('../controllers/authController');
-/* 
+/*
   {
       accessToken: '12q.aw2.reg', // 20 min. n count
-      refreshToken: '123.sdg.654' // 20 days. 1 count 
+      refreshToken: '123.sdg.654' // 20 days. 1 count
   }
 */
 authRouter.post('/sign-in', AuthController.signIn);

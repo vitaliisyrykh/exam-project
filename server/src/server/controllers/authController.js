@@ -7,7 +7,7 @@ const {
   ACCESS_TOKEN_TIME,
   REFRESH_TOKEN_SECRET,
   REFRESH_TOKEN_TIME,
-  MAX_DEVICE_AMOUNT,
+  MAX_DEVICE_AMOUNT
 } = require('../../constants');
 
 const signJWT = promisify(jwt.sign);
@@ -15,12 +15,12 @@ const signJWT = promisify(jwt.sign);
 module.exports.signIn = async (req, res, next) => {
   try {
     const {
-      body: { email, password },
+      body: { email, password }
     } = req;
 
     /* Find user */
     const user = await User.findOne({
-      where: { email },
+      where: { email }
     });
     /* Compare password */
     if (user && (await user.comparePassword(password))) {
@@ -29,7 +29,7 @@ module.exports.signIn = async (req, res, next) => {
         {
           userId: user.id,
           email: user.email,
-          role: user.role,
+          role: user.role
         },
         ACCESS_TOKEN_SECRET,
         { expiresIn: ACCESS_TOKEN_TIME }
@@ -39,16 +39,16 @@ module.exports.signIn = async (req, res, next) => {
         {
           userId: user.id,
           email: user.email,
-          role: user.role,
+          role: user.role
         },
         REFRESH_TOKEN_SECRET,
         {
-          expiresIn: REFRESH_TOKEN_TIME,
+          expiresIn: REFRESH_TOKEN_TIME
         }
       );
       if ((await user.countRefreshTokens()) >= MAX_DEVICE_AMOUNT) {
         const [oldestToken] = await user.getRefreshTokens({
-          order: [['updatedAt', 'ASC']],
+          order: [['updatedAt', 'ASC']]
         });
         await oldestToken.update({ value: refreshToken });
       } else {
@@ -60,9 +60,9 @@ module.exports.signIn = async (req, res, next) => {
           user,
           tokenPair: {
             access: accessToken,
-            refresh: refreshToken,
-          },
-        },
+            refresh: refreshToken
+          }
+        }
       });
     }
     next(createHttpError(401, 'Invalid credentials'));
