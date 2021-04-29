@@ -55,7 +55,7 @@ module.exports.signIn = async (req, res, next) => {
         }
       );
 
-      if ((await user.countRefreshTokens()) < CONSTANTS.MAX_DEVICES_AMOUNT) {
+      if ((await user.countRefreshTokens()) <= CONSTANTS.MAX_DEVICES_AMOUNT) {
         await user.createRefreshToken({ value: refreshToken });
       } else {
         const [oldRefreshToken] = await user.getRefreshTokens({
