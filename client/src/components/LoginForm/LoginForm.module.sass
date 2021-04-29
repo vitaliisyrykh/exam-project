@@ -30,6 +30,7 @@
 
   .inputContainer
     display: flex
+    position: relative
     flex-direction: column
     justify-content: center
     align-self: stretch
@@ -48,6 +49,15 @@
       padding-bottom: 5px
       padding-top: 5px
       text-align: center
+      background-color: #b72522
+
+      &::before 
+              content: ''; 
+              position: absolute;
+              left: 15px; 
+              top: 60px;
+              border: 10px solid transparent;
+              border-bottom: 16px solid #b72522;
 
     .input
       background-color: white
