@@ -1,30 +1,66 @@
-import axios from 'axios';
+import httpClient from './';
 import CONTANTS from '../constants';
 import history from '../browserHistory';
 
-const instance = axios.create({
-    baseURL: CONTANTS.BASE_URL
-});
+let accessToken = null;
 
-instance.interceptors.request.use(config => {
-    const token = window.localStorage.getItem(CONTANTS.ACCESS_TOKEN);
-    if (token) {
-        config.headers = {...config.headers, 'Authorization': token};
+httpClient.interceptors.request.use(
+  config => {
+    if (accessToken) {
+      config.headers = {
+        ...config.headers,
+        Authorization: `Bearer ${accessToken}`,
+      };
     }
     return config;
-}, (err) => Promise.reject(err));
+  },
+  err => Promise.reject(err)
+);
 
+httpClient.interceptors.response.use(
+  response => {
+    if (response.data.data.tokenPair) {
+      const {
+        data: {
+          data: {
+            tokenPair: { refresh, access },
+          },
+        },
+      } = response;
 
-instance.interceptors.response.use(response => {
-    if (response.data.token) {
-        window.localStorage.setItem(CONTANTS.ACCESS_TOKEN, response.data.token);
+      accessToken = access;
+
+      window.localStorage.setItem(CONTANTS.REFRESH_TOKEN, refresh);
     }
     return response;
-}, err => {
-    if (err.response.status === 408 && history.location.pathname !== '/login' && history.location.pathname !== '/registration' && history.location.pathname !== '/') {
-        history.replace('/login');
+  },
+  async err => {
+    const { response, request, config } = err;
+
+    const token = window.localStorage.getItem(CONTANTS.REFRESH_TOKEN);
+
+    if (response.status === 419 && token) {
+      const {
+        data: {
+          data: {
+            tokenPair: { access, refresh },
+          },
+        },
+      } = await httpClient.post('/auth/refresh', { refreshToken: token });
+      
+      window.localStorage.setItem(CONTANTS.REFRESH_TOKEN, refresh);
+      accessToken = access;
+      return httpClient.request(config);
+    } else if (
+      response.status === 419 &&
+      history.location.pathname !== '/' &&
+      history.location.pathname !== '/login' &&
+      history.location.pathname !== '/registration'
+    ) {
+      history.replace('/login');
     }
     return Promise.reject(err);
-});
+  }
+);
 
-export default instance;
+export default httpClient;

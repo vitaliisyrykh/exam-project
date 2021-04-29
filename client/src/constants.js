@@ -16,8 +16,8 @@ export default {
   OFFER_STATUS_PENDING: 'pending',
   STATIC_IMAGES_PATH: '/staticImages/',
   ANONYM_IMAGE_PATH: '/staticImages/anonym.png',
-  BASE_URL: `http://${ serverIP }:${ serverPort }/`,
-  ACCESS_TOKEN: 'accessToken',
+  BASE_URL: `http://${ serverIP }:${ serverPort }/api/`,
+  REFRESH_TOKEN: 'refreshToken',
   publicURL: env === 'production'
     ? `http://${ serverIP }:80/images/`
     : `http://${ serverIP }:${ serverPort }/public/images/`,

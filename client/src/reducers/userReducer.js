@@ -22,7 +22,7 @@ export default function (state = initialState, action) {
                 ...state,
                 isFetching: false,
                 error: null,
-                data: action.data
+                data: action.data.data.user
             }
         }
         case ACTION.GET_USER_ERROR: {
