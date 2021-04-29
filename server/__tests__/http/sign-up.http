@@ -2,10 +2,10 @@ POST http://localhost:3000/auth/sign-up
 Content-Type: application/json
 
 {
-  "firstName": "U1",
-  "lastName": "S1",
-  "displayName": "newUser",
+  "firstName": "U2",
+  "lastName": "S2",
+  "displayName": "newUser2",
   "password": "Test1234",
-  "email": "mail1@gmail.com",
-  "role": "customer"
+  "email": "mail3@gmail.com",
+  "role": "creator"
 }
