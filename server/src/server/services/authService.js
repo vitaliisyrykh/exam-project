@@ -4,7 +4,7 @@ const CONSTANTS = require('../../constants');
 
 module.exports.createSession = async user => {
   const tokenPair = await JwtService.createTokenPair({
-    id: user.id,
+    userId: user.id,
     email: user.email,
     role: user.role,
   });

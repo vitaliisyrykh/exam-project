@@ -157,7 +157,7 @@ class Header extends React.Component{
 }
 
 const mapStateToProps = (state) => {
-  return state.userStore;
+  return state.auth;
 };
 const mapDispatchToProps = (dispatch) => {
   return {

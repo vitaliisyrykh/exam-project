@@ -10,8 +10,7 @@ export  function* loginSaga(action){
     try{
         const {data:{data:{user}}} = yield  restController.loginRequest(action.data);
         history.replace('/');
-        yield put({type: ACTION.AUTH_ACTION_SUCCESS});
-        yield put({type: ACTION.GET_USER_SUCCESS, user})
+        yield put({type: ACTION.AUTH_ACTION_SUCCESS, user});
     }
     catch (err) {
         console.log(err)

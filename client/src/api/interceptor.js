@@ -1,6 +1,7 @@
+import axios from 'axios';
 import httpClient from './';
 import CONTANTS from '../constants';
-import history from '../browserHistory';
+// import history from '../browserHistory';
 
 let accessToken = null;
 
@@ -19,7 +20,7 @@ httpClient.interceptors.request.use(
 
 httpClient.interceptors.response.use(
   response => {
-    if (response.data.data.tokenPair) {
+    if (response.data.data && response.data.data.tokenPair) {
       const {
         data: {
           data: {
@@ -35,7 +36,7 @@ httpClient.interceptors.response.use(
     return response;
   },
   async err => {
-    const { response, request, config } = err;
+    const { response, config } = err;
 
     const token = window.localStorage.getItem(CONTANTS.REFRESH_TOKEN);
 
@@ -47,17 +48,14 @@ httpClient.interceptors.response.use(
           },
         },
       } = await httpClient.post('/auth/refresh', { refreshToken: token });
-      
+
       window.localStorage.setItem(CONTANTS.REFRESH_TOKEN, refresh);
       accessToken = access;
-      return httpClient.request(config);
-    } else if (
-      response.status === 419 &&
-      history.location.pathname !== '/' &&
-      history.location.pathname !== '/login' &&
-      history.location.pathname !== '/registration'
-    ) {
-      history.replace('/login');
+      config.headers = {
+        ...config.headers,
+        Authorization: `Bearer ${accessToken}`,
+      };
+      return axios.request(config);
     }
     return Promise.reject(err);
   }
