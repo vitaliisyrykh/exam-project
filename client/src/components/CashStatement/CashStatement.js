@@ -11,19 +11,19 @@ const CashStatement = props => {
       </div>
       <div className={styles.valuesContainer}>
         <div className={styles.valueColumn}>
-          <span>Id</span>
-          <span>123</span>
-          <span>32</span>
+          <span className={styles.headingSpan}>Id</span>
+          <span className={styles.valueSpan}>123</span>
+          <span className={styles.valueSpan}>32</span>
         </div>
         <div className={styles.valueColumn}>
-          <span>Earned money</span>
-          <span>+100</span>
-          <span>+25</span>
+          <span className={styles.headingSpan}>Earned money</span>
+          <span className={styles.valueSpan}>+100</span>
+          <span className={styles.valueSpan}>+25</span>
         </div>
         <div className={styles.valueColumn}>
-          <span>Spent money</span>
-          <span>-200</span>
-          <span>-40</span>
+          <span className={styles.headingSpan}>Spent money</span>
+          <span className={styles.valueSpan}>-200</span>
+          <span className={styles.valueSpan}>-40</span>
         </div>
       </div>
     </section>
