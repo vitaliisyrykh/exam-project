@@ -55,7 +55,7 @@ module.exports = {
         },
       })
       .then(() =>
-        queryInterface.addConstraint('User', {
+        queryInterface.addConstraint('Users', {
           type: 'check',
           fields: ['balance'],
           where: {
@@ -67,6 +67,6 @@ module.exports = {
       );
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('User');
+    return queryInterface.dropTable('Users');
   },
 };
