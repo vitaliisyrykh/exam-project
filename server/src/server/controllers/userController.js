@@ -119,9 +119,8 @@ module.exports.changeMark = async (req, res, next) => {
 };
 
 module.exports.payment = async (req, res, next) => {
-  let transaction;
+  const transaction = await db.sequelize.transaction();
   try {
-    transaction = await db.sequelize.transaction();
     await bankQueries.updateBankBalance(
       {
         balance: db.sequelize.literal(`
