@@ -42,7 +42,7 @@ module.exports.getContestById = async (req, res, next) => {
       order: [[db.Offers, 'id', 'asc']],
       include: [
         {
-          model: db.Users,
+          model: db.User,
           required: true,
           attributes: {
             exclude: ['password', 'role', 'balance', 'accessToken'],
@@ -58,7 +58,7 @@ module.exports.getContestById = async (req, res, next) => {
           attributes: { exclude: ['userId', 'contestId'] },
           include: [
             {
-              model: db.Users,
+              model: db.User,
               required: true,
               attributes: {
                 exclude: ['password', 'role', 'balance', 'accessToken'],

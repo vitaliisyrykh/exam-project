@@ -1,10 +1,10 @@
 const bcrypt = require('bcrypt');
-const { Users } = require('../../models/index');
+const { User } = require('../../models/index');
 const NotFound = require('../../errors/UserNotFoundError');
 const ServerError = require('../../errors/ServerError');
 
 module.exports.updateUser = async (data, userId, transaction) => {
-  const [updatedCount, [updatedUser]] = await Users.update(data, {
+  const [updatedCount, [updatedUser]] = await User.update(data, {
     where: { id: userId },
     returning: true,
     transaction,
@@ -16,7 +16,7 @@ module.exports.updateUser = async (data, userId, transaction) => {
 };
 
 module.exports.findUser = async (predicate, transaction) => {
-  const result = await Users.findOne({ where: predicate, transaction });
+  const result = await User.findOne({ where: predicate, transaction });
   if (!result) {
     throw new NotFound('user with this data didn`t exist');
   } else {
@@ -25,7 +25,7 @@ module.exports.findUser = async (predicate, transaction) => {
 };
 
 module.exports.userCreation = async data => {
-  const newUser = await Users.create(data);
+  const newUser = await User.create(data);
   if (!newUser) {
     throw new ServerError('server error on user creation');
   } else {
