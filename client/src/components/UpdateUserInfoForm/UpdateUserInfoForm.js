@@ -78,13 +78,13 @@ const UpdateUserInfoForm = (props) => {
 
 
 const mapStateToProps = (state) => {
-    const {data, error} = state.auth;
+    const {user, error} = state.auth;
     return {
         error,
         initialValues: {
-            firstName: data.firstName,
-            lastName: data.lastName,
-            displayName: data.displayName
+            firstName: user.firstName,
+            lastName: user.lastName,
+            displayName: user.displayName
         }
     }
 };

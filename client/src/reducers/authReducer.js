@@ -4,7 +4,7 @@ import ACTION from '../actions/actionTypes';
 const initialState = {
     isFetching: false,
     error: null,
-    data: null,
+    user: null,
 };
 
 export default function (state = initialState, action) {
@@ -21,7 +21,7 @@ export default function (state = initialState, action) {
                 ...state,
                 isFetching: false,
                 error: null,
-                data: action.user
+                user: action.user
             }
         }
         case ACTION.AUTH_ACTION_ERROR: {

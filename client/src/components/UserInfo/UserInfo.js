@@ -61,9 +61,9 @@ const UserInfo = (props) => {
 };
 
 const mapStateToProps = (state) => {
-    const {data} = state.auth;
+    const {user} = state.auth;
     const {isEdit} = state.userProfile;
-    return {data, isEdit};
+    return {user, isEdit};
 };
 
 const mapDispatchToProps = (dispatch) => {
