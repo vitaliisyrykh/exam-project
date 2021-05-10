@@ -1,12 +1,12 @@
 'use strict';
 const { Model } = require('sequelize');
-const bcrypt = require('bcrypt');
+const bcryptjs = require('bcryptjs');
 const { SALT_ROUNDS } = require('../../constants');
 
 async function hashPassword (user, options) {
   if (user.changed('password')) {
     const { password } = user;
-    const hash = await bcrypt.hash(password, SALT_ROUNDS);
+    const hash = await bcryptjs.hash(password, SALT_ROUNDS);
     user.password = hash;
   }
 }
@@ -32,7 +32,7 @@ module.exports = (sequelize, DataTypes) => {
     }
 
     async comparePassword (plainPassword) {
-      return bcrypt.compare(plainPassword, this.getDataValue('password'));
+      return bcryptjs.compare(plainPassword, this.getDataValue('password'));
     }
   }
   User.init(

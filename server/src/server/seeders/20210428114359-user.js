@@ -1,5 +1,5 @@
 'use strict';
-const bcrypt = require('bcrypt');
+const bcryptjs = require('bcryptjs');
 const { SALT_ROUNDS } = require('../../constants');
 
 module.exports = {
@@ -11,7 +11,7 @@ module.exports = {
           firstName: 'Buyer',
           lastName: 'Buyerovich',
           displayName: 'buyer',
-          passwordHash: bcrypt.hashSync('Test1234', SALT_ROUNDS),
+          passwordHash: bcryptjs.hashSync('Test1234', SALT_ROUNDS),
           email: 'buyer@mail.com',
           role: 'customer',
           createdAt: new Date(),
@@ -21,7 +21,7 @@ module.exports = {
           firstName: 'Creator',
           lastName: 'Creatorovich',
           displayName: 'creator',
-          passwordHash: bcrypt.hashSync('Test1234', SALT_ROUNDS),
+          passwordHash: bcryptjs.hashSync('Test1234', SALT_ROUNDS),
           email: 'creator@mail.com',
           role: 'creator',
           createdAt: new Date(),
