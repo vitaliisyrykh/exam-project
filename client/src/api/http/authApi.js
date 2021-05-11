@@ -78,7 +78,7 @@ class AuthApi {
       this._saveTokenPair(tokenPair);
       config.headers['Authorization'] = `Bearer ${this.#_accessToken}`;
 
-      return axios.request(config);
+      return this.#_client(config);
     }
     return Promise.reject(err);
   };
