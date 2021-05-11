@@ -27,9 +27,7 @@ function App () {
 
   useLayoutEffect(() => {
     dispatch(
-      requestAuthAction({
-        refreshToken: localStorage.getItem(CONSTANTS.REFRESH_TOKEN),
-      })
+      requestAuthAction(localStorage.getItem(CONSTANTS.REFRESH_TOKEN))
     );
   }, []);
 
