@@ -101,7 +101,7 @@ function App () {
           component={Dashboard}
         />
         <PrivateRoute
-          roles={['customer']}
+          roles={['customer','creator']}
           exact
           path='/contest/:id'
           component={ContestPage}
