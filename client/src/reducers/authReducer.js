@@ -43,14 +43,14 @@ export default function (state = initialState, action) {
         case ACTION.CLEAR_USER_STORE:{
             return{
                 ...state,
-                data: null,
+                user: null,
                 error: null
             }
         }
         case ACTION.UPDATE_USER_DATA_SUCCESS:{
             return{
                 ...state,
-                data: {...state.data,...action.data},
+                user: {...state.user,...action.user},
                 error: null
             }
         }
