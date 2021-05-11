@@ -69,6 +69,10 @@ class AuthApi {
 
     const token = window.localStorage.getItem(CONSTANTS.REFRESH_TOKEN);
 
+    if (response.status === 401) {
+      this.logout();
+    }
+
     if (response.status === 419 && token) {
       const {
         data: {

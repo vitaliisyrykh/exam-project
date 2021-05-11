@@ -148,7 +148,7 @@ class Header extends React.Component{
                             </ul>
                         </div>
                         {this.props.user && this.props.user.role !== CONSTANTS.CREATOR &&
-                        <div className={styles.startContestBtn} onClick={this.startContests}>START CONTEST</div>}
+                        <div className={styles.startContestBtn} /* onClick={this.startContests} */><Link to="/startContest">START CONTEST</Link></div>}
                     </div>
                 </div>
             </div>

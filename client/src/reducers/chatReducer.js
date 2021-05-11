@@ -19,7 +19,7 @@ const initialState = {
     catalogList: [],
     isRenameCatalog: false,
     isShowChatsInCatalog: false,
-    catalogCreationMode:    CONSTANTS.ADD_CHAT_TO_OLD_CATALOG
+    catalogCreationMode: CONSTANTS.ADD_CHAT_TO_OLD_CATALOG
 };
 
 export default function (state = initialState, action) {

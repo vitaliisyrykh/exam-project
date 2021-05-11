@@ -26,9 +26,10 @@ function App () {
   const dispatch = useDispatch();
 
   useLayoutEffect(() => {
-    dispatch(
-      requestAuthAction(localStorage.getItem(CONSTANTS.REFRESH_TOKEN))
-    );
+    const refreshToken = localStorage.getItem(CONSTANTS.REFRESH_TOKEN);
+    if (refreshToken) {
+      dispatch(requestAuthAction(refreshToken));
+    }
   }, []);
 
   return (
@@ -46,26 +47,15 @@ function App () {
       />
       <Switch>
         <Route exact path='/' component={Home} />
-        <Route
-          exact
-          path='/login'
-          component={OnlyNotAuthorizedUserHoc(LoginPage)}
-        />
-        <Route
-          exact
-          path='/registration'
-          component={OnlyNotAuthorizedUserHoc(RegistrationPage)}
-        />
-        <Route exact path='/payment' component={PrivateHoc(Payment)} />
+        <Route exact path='/login' component={LoginPage} />
+        <Route exact path='/registration' component={RegistrationPage} />
+        <Route exact path='/payment' component={Payment} />
         {/* <Route
           exact
           path='/startContest'
           component={PrivateHoc(StartContestPage)}
         /> */}
-        <PrivateRoute 
-          roles={['buyer']}
-          component={StartContestPage}
-        />
+        <Route roles={['buyer']} exact path='/startContest' component={StartContestPage} />
         <Route
           exact
           path='/startContest/nameContest'
@@ -90,9 +80,9 @@ function App () {
             title: 'LOGO',
           })}
         />
-        <Route exact path='/dashboard' component={PrivateHoc(Dashboard)} />
-        <Route exact path='/contest/:id' component={PrivateHoc(ContestPage)} />
-        <Route exact path='/account' component={PrivateHoc(UserProfile)} />
+        <Route exact path='/dashboard' component={Dashboard} />
+        <Route exact path='/contest/:id' component={ContestPage} />
+        <Route exact path='/account' component={UserProfile} />
         <Route component={NotFound} />
       </Switch>
       <ChatContainer />

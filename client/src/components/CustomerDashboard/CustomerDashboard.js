@@ -62,8 +62,7 @@ class CustomerDashboard extends React.Component {
     };
 
     render() {
-        const {error, haveMore} = this.props;
-        const {customerFilter} = this.props;
+        const {error, haveMore, customerFilter} = this.props;
         return (
             <div className={styles.mainContainer}>
                 <div className={styles.filterContainer}>

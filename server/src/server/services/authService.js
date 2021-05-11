@@ -2,12 +2,14 @@ const JwtService = require('./jwtService');
 const UserService = require('./userService');
 const CONSTANTS = require('../../constants');
 
+const getTokenPayload = user => ({
+  userId: user.id,
+  email: user.email,
+  role: user.role,
+});
+
 module.exports.createSession = async user => {
-  const tokenPair = await JwtService.createTokenPair({
-    userId: user.id,
-    email: user.email,
-    role: user.role,
-  });
+  const tokenPair = await JwtService.createTokenPair(getTokenPayload(user));
   if ((await user.countRefreshTokens()) <= CONSTANTS.MAX_DEVICES_AMOUNT) {
     await user.createRefreshToken({ value: tokenPair.refresh });
   } else {
@@ -26,11 +28,7 @@ module.exports.createSession = async user => {
 
 module.exports.refreshSession = async refreshTokenInstance => {
   const user = await refreshTokenInstance.getUser();
-  const tokenPair = await JwtService.createTokenPair({
-    id: user.id,
-    email: user.email,
-    role: user.role,
-  });
+  const tokenPair = await JwtService.createTokenPair(getTokenPayload(user));
   await refreshTokenInstance.update({
     value: tokenPair.refresh,
   });

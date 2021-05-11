@@ -10,6 +10,7 @@ const checkAccessToken = async (req, res, next) => {
     if (authorization) {
       const [, token] = authorization.split(' ');
       req.tokenData = await JwtService.verifyAccessToken(token);
+      console.log(req.tokenData)
       return next();
     }
     next(createHttpError(401, 'Need token'));
@@ -23,7 +24,6 @@ const checkRefreshToken = async (req, res, next) => {
     const {
       body: { refreshToken }, // 'Bearer slkfvhnrd.dfgrftnklh.srgfvujrfh'
     } = req;
-
     req.tokenData = await JwtService.verifyRefreshToken(refreshToken);
     next();
   } catch (error) {
