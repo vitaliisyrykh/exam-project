@@ -4,13 +4,13 @@ import { Redirect, Route } from 'react-router-dom';
 
 const PrivateRoute = ({ roles, ...rest }) => {
   const {
-    user: { role },
+    user,
     isFetching,
     error,
   } = useSelector(state => state.auth);
 
   if (user) {
-    if (roles.includes(role)) {
+    if (roles.includes(user.role)) {
       return <Route {...rest} />;
     }
   }
