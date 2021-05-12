@@ -10,6 +10,7 @@ const upload = require('../utils/fileUpload');
 const authRouter = require('./auth');
 const { checkAccessToken } = require('../middlewares/tokenMw');
 const router = express.Router();
+const transactionHistory = require('../controllers/transactionHistory');
 
 router.use('/auth', authRouter);
 
@@ -98,5 +99,6 @@ router.post('/removeChatFromCatalog', chatController.removeChatFromCatalog);
 router.post('/deleteCatalog', chatController.deleteCatalog);
 
 router.post('/getCatalogs', chatController.getCatalogs);
+router.get('/dashboard/earnedspend', transactionHistory.getTransactionHistory)
 
 module.exports = router;
