@@ -29,6 +29,10 @@ module.exports = (sequelize, DataTypes) => {
       User.hasMany(models.RefreshToken, {
         foreignKey: 'userId',
       });
+      User.hasMany(models.TransactionHistory,{
+        foreignKey: 'userId',
+        targetKey: 'id'
+      })
     }
 
     async comparePassword (plainPassword) {
