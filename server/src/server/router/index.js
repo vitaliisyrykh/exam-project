@@ -99,6 +99,6 @@ router.post('/removeChatFromCatalog', chatController.removeChatFromCatalog);
 router.post('/deleteCatalog', chatController.deleteCatalog);
 
 router.post('/getCatalogs', chatController.getCatalogs);
-router.get('/dashboard/earnedspend', transactionHistory.getTransactionHistory)
+router.get('/dashboard/earnedspend:id', transactionHistory.getTransactionHistory)
 
 module.exports = router;

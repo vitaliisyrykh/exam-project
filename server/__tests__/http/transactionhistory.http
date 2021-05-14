@@ -1,1 +1,1 @@
-GET loacalhost:5000/api/dashboard/earnedspend
+GET http://localhost:5000/dashboard/earnedspend/1
