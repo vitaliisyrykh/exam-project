@@ -56,7 +56,7 @@ class Chat extends React.Component {
         const {id} = this.props.auth.user;
         const {changeShow,getPreviewChat} = this.props;
         return (
-            <div className={classNames(styles.chatContainer, {[styles.showChat]: isShow})}>
+            <div ref={this.props.ref} className={classNames(styles.chatContainer, {[styles.showChat]: isShow})}>
                 {error && <ChatError getData={getPreviewChat}/>}
                 {isShowCatalogCreation && <CatalogCreation/>}
                 {isExpanded ? <Dialog userId={id}/> : this.renderDialogList()}

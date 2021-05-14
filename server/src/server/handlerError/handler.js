@@ -1,7 +1,8 @@
 const { TokenExpiredError, JsonWebTokenError } = require('jsonwebtoken');
+const { UniqueConstraintError } = require('sequelize');
 
-module.exports.tokenErrorHandler = (err, req, res, next) =>{
- if (err instanceof TokenExpiredError) {
+module.exports.tokenErrorHandler = (err, req, res, next) => {
+  if (err instanceof TokenExpiredError) {
     return res.status(419).send('Token expired');
   }
 
@@ -9,16 +10,20 @@ module.exports.tokenErrorHandler = (err, req, res, next) =>{
     return res.status(401).send('Invalid token');
   }
 
-  next(err)
-}
+  next(err);
+};
 
-module.exports.sequelizeErrorHandler = () =>{
+module.exports.sequelizeErrorHandler = (err, req, res, next) => {
+  if (err instanceof UniqueConstraintError) {
+    const {
+      errors: [{ message }],
+    } = err;
+    return res.status(409).send({ message });
+  }
+  next(err);
+};
 
-}
-
-module.exports.validationErrorHandler = () =>{
-
-}
+module.exports.validationErrorHandler = () => {};
 
 module.exports.basicErrorHandler = (err, req, res, next) => {
   console.log('LOG ERROR=>>>>');

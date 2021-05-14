@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const {
   env: {
     SQUADHELP_BANK_NUMBER,
