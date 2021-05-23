@@ -20,7 +20,7 @@ import ChatContainer from './components/Chat/ChatComponents/ChatContainer/ChatCo
 import { requestAuthRefresh } from './actions/actionCreator'
 import constants from './constants'
 import PrivateRoute from './components/PrivateRoute/PrivateRoute'
-import HowItWork from './'
+import HowItWork from './components/HowItWorks/HowItWork'
 
 function App () {
   const dispatch = useDispatch()
@@ -114,7 +114,7 @@ function App () {
         <Route
           exact
           path='/howitworks'
-          component ={}
+          component ={HowItWork}
         />
       </Switch>
       <ChatContainer />
