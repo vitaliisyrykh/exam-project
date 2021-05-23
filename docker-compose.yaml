@@ -5,6 +5,8 @@ services:
       context: ./client
     ports:
       - "80:80"
+    stdin_open: true
+    tty: true  
     networks: 
       - client
     depends_on:
