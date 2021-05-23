@@ -9,7 +9,6 @@ import RegistrationPage from './pages/RegistrationPage/RegistrationPage'
 import Payment from './pages/Payment/Payment'
 import StartContestPage from './pages/StartContestPage/StartContestPage'
 import Dashboard from './pages/Dashboard/Dashboard'
-import NotFound from './components/NotFound/NotFound'
 import Home from './pages/Home/Home'
 import ContestPage from './pages/ContestPage/ContestPage'
 import UserProfile from './pages/UserProfile/UserProfile'
@@ -100,7 +99,7 @@ function App () {
           component={Dashboard}
         />
         <PrivateRoute
-          roles={['customer','creator']}
+          roles={['customer', 'creator']}
           exact
           path='/contest/:id'
           component={ContestPage}
@@ -111,11 +110,7 @@ function App () {
           path='/account'
           component={UserProfile}
         />
-        <Route
-          exact
-          path='/howitworks'
-          component ={HowItWork}
-        />
+        <Route exact path='/howitworks' component={HowItWork} />
       </Switch>
       <ChatContainer />
     </Router>
