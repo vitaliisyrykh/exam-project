@@ -1,34 +1,32 @@
-import React, {Component} from 'react';
-import styles from './Footer.module.sass';
-import CONSTANTS from '../../constants';
+import React, { Component } from 'react'
+import styles from './Footer.module.sass'
+import CONSTANTS from '../../constants'
+import { Link } from 'react-router-dom'
 
-
-class Footer extends Component {
-
-    topFooterItemsRender = (item) => {
-        return (
-            <div key={item.title}>
-                <h4>{item.title}</h4>
-                {item.items.map(i => <a key={i} href={item.href}>{i}</a>)}
-            </div>
-        );
-    };
-
-    topFooterRender() {
-        return CONSTANTS.FooterItems.map(item => this.topFooterItemsRender(item))
-    };
-
-    render() {
-        return (
-            <div className={styles.footerContainer}>
-                <div className={styles.footerTop}>
-                    <div>
-                        {this.topFooterRender()}
-                    </div>
-                </div>
-            </div>
-        )
-    }
+const Footer = () => {
+  const topFooterItemsRender = item => {
+    console.log(item)
+    return (
+      <div key={item.title}>
+        <h4>{item.title}</h4>
+        {item.items.map(i => (
+          <Link to={item.href} key={i}>
+            <span>{i}</span>
+          </Link>
+        ))}
+      </div>
+    )
+  }
+  const topFooterRender = () => {
+    return CONSTANTS.FooterItems.map(item => topFooterItemsRender(item))
+  }
+  return (
+    <div className={styles.footerContainer}>
+      <div className={styles.footerTop}>
+        <div>{topFooterRender()}</div>
+      </div>
+    </div>
+  )
 }
 
-export default Footer;
+export default Footer
