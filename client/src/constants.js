@@ -47,47 +47,47 @@ export default {
   FooterItems: [
     {
       title: 'SQUADHELP',
-      items: ['About', 'Contact', 'How It Works?', 'Testimonials', 'Our Work']
+      items: [
+        { name: 'About', href: 'google.com' },
+        { name: 'Contact', href: 'google.com' },
+        { name: 'How It Works?', href: '/howitworks' },
+        { name: 'Testimonials', href: 'google.com' },
+        { name: 'Our Work', href: 'google.com' }
+      ]
     },
     {
       title: 'RESOURCES',
       items: [
-        'How It Works',
-        'Become a Creative',
-        'Business Name Generator',
-        'Discussion Forum',
-        'Blog',
-        'Download eBook',
-        'Pricing',
-        'Help & FAQs'
-      ],
-      href:[
-        '/howitworks',
-        'google.com',
-        'google.com',
-        'google.com',
-        'google.com',
-        'google.com',
-        'google.com',
-        'google.com'
+        { name: 'How It Works', href: 'google.com' },
+        { name: 'Become a Creative', href: 'google.com' },
+        { name: 'Business Name Generator', href: 'google.com' },
+        { name: 'Discussion Forum', href: 'google.com' },
+        { name: 'Blog', href: 'google.com' },
+        { name: 'Download eBook', href: 'google.com' },
+        { name: 'Pricing', href: 'google.com' },
+        { name: 'Help & FAQs', href: 'google.com' }
       ]
     },
     {
       title: 'OUR SERVICES',
       items: [
-        'Naming',
-        'Logo Design',
-        'Taglines',
-        'Premium Names For Sale',
-        'Creative Owned Names For Sale',
-        'Audience Testing',
-        'Trademark Research & Filling',
-        'Managed Agency Service'
+        { name: 'Naming', href: 'google.com' },
+        { name: 'Logo Design', href: 'google.com' },
+        { name: 'Taglines', href: 'google.com' },
+        { name: 'Premium Names For Sale', href: 'google.com' },
+        { name: 'Creative Owned Names For Sale', href: 'google.com' },
+        { name: 'Audience Testing', href: 'google.com' },
+        { name: 'Trademark Research & Filling', href: 'google.com' },
+        { name: 'Managed Agency Service', href: 'google.com' }
       ]
     },
     {
       title: 'LEGAL',
-      items: ['Terms of Service', 'Privacy Policy', 'Cookie Policy']
+      items: [
+        { name: 'Terms of Service', href: 'google.com' },
+        { name: 'Privacy Policy', href: 'google.com' },
+        { name: 'Cookie Policy', href: 'google.com' }
+      ]
     }
   ]
 }
