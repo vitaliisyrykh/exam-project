@@ -20,6 +20,7 @@ import ChatContainer from './components/Chat/ChatComponents/ChatContainer/ChatCo
 import { requestAuthRefresh } from './actions/actionCreator'
 import constants from './constants'
 import PrivateRoute from './components/PrivateRoute/PrivateRoute'
+import HowItWork from './'
 
 function App () {
   const dispatch = useDispatch()
@@ -110,7 +111,11 @@ function App () {
           path='/account'
           component={UserProfile}
         />
-        <PrivateRoute component={NotFound} />
+        <Route
+          exact
+          path='/howitworks'
+          component ={}
+        />
       </Switch>
       <ChatContainer />
     </Router>

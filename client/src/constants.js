@@ -60,6 +60,16 @@ export default {
         'Download eBook',
         'Pricing',
         'Help & FAQs'
+      ],
+      href:[
+        '/howitworks',
+        'google.com',
+        'google.com',
+        'google.com',
+        'google.com',
+        'google.com',
+        'google.com',
+        'google.com'
       ]
     },
     {
