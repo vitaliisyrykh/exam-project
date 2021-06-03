@@ -1,5 +1,7 @@
 import React from 'react'
-import styles from './HowDoesSquadhelpWork.module.sass'
+import styles from './HowDoesSquadhelpWork.module.sass';
+import CONSTANTS from './../../../constants';
+
 const HowDoesSquadhelpWork = props => {
   return (
     <section className={styles.howDoesSquadhelpWorkMainContainer}>
@@ -19,7 +21,9 @@ const HowDoesSquadhelpWork = props => {
             <span>Play Video</span>
           </button>
         </article>
-        <div className='imgContainer'></div>
+        <div className='imgContainer'>
+          <img src={`${CONSTANTS.STATIC_IMAGES_PATH}HowItWorksPageImg/cmi_4abbf04a.png`}/>
+        </div>
       </div>
     </section>
   )
