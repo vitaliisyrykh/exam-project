@@ -1,7 +1,6 @@
 .howDoNamingContestWorkContainer
    box-sizing: border-box
    width: 100%
-   margin: 0 auto
    padding: 32px 15px
    display: flex
    flex-direction: column
@@ -13,40 +12,74 @@
      align-items: center
      margin: 0 auto
      margin-bottom: 65px
-     .text
-        font-size: 16px
-        line-height: 27.2px
-        color: #77838f    
-        
+     .headingText
+       font-size: 11px
+       text-align: center
+       color: #377dff
+       background-color: rgba(55, 125, 255, 0.11)
+       border-radius: 99px
+       padding: 7px 15px
+       margin-bottom: 8px
      .heading
         margin-bottom: 8px
         font-size: 40px
         margin-bottom: 8px
      .headingDiscription
-        font-size: 11px
-        text-align: center
-        color: #377dff
-        background-color: rgba(55, 125, 255, 0.11)
-        border-radius: 99px
-        padding: 7px 15px
-        margin-bottom: 8px
+        font-size: 16px
+        line-height: 27.2px
+        color: #77838f  
+        
    .contentContainer
      display: flex
      flex-direction: row
+     
      .imgContainer
        min-width: 50%
      .discriptionListContainer
+       min-width: 50%
+       position: relative
        .discriptionList
+         &::before
+             content: ''
+             position: absolute
+             border-top: 1px solid  rgb(231,234 , 243)
+             width: 549px
+             transform: rotate(90deg)
+             transform-origin: 0% 0%
+             top: 90px
+             left: 6px
+
+         .discriptionItemContainer
+          padding:  15px 0px 15px 60px
          .discriptionItem
            display: flex
+           flex-direction: row
+           flex-wrap: nowrap
+           justify-items: center
            border: 1px solid rgb(231,234 , 243)
-           border-radius: 5px
-           padding:  15px 0px 15px 40px
-           margin: 10px
+           border-radius: 5px 
+           position: relative
+           min-height: 150px
+           &::before
+             content: ''
+             position: absolute
+             border-top: 1px solid  rgb(231,234 , 243)
+             width: 40px
+             left: -55px
+             bottom: 75px
+
            .discriptionItemNumber
              font-size: 56px
              color: #377dff
-             padding: 32px
+             padding: 50px 32px 32px 32px
+             text-align: center
            .discription
-             padding: 32px
-                  
+             padding: 50px 13px 32px 32px
+             font-size: 16px
+             line-height: 23px
+             color: #77838f
+             text-align: left
+           
+             
+             
+                 
