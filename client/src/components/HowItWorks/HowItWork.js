@@ -4,6 +4,7 @@ import ThreeWaysToUseSquadHelp from './ThreeWaysToUseSquadHelp/ThreeWaysToUseSqu
 import HowDoNamingContestWork from './HowDoNamingContestWork/HowDoNamingContestWork';
 import ReadyToGetStarted from './ReadyToGetStarted/ReadyToGetStarted';
 import DiscriptionAndQuastions from './DiscriptionAndQuastions/DiscriptionAndQuastions';
+import FeaturedIn from './FeaturedIn/FeaturedIn';
 
 const HowItWork = props => {
   return (
@@ -13,6 +14,7 @@ const HowItWork = props => {
       <HowDoNamingContestWork/>
       <ReadyToGetStarted/>
       <DiscriptionAndQuastions/>
+      <FeaturedIn/>
     </div>
   );
 }
