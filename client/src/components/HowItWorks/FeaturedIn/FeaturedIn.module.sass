@@ -1,7 +1,7 @@
 .featuredInContainer
   box-sizing: border-box
   margin: 20px 142px
-  width: 100vh
+  max-width: 100%
   display: flex
   justify-content: space-between
   font-family: Poppins, Helvetica, Arial, sans-serif
@@ -15,6 +15,9 @@
     display: flex
     margin-left: 350px
     border-top: 1px solid rgb(231,234 , 243)
+    @media screen and ( max-width: 1024px )
+      margin-left: 50px
+      
     .imgLink
       padding: 15px
       img

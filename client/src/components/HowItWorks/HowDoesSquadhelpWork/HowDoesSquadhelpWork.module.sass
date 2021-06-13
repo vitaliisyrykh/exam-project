@@ -1,13 +1,15 @@
 .howDoesSquadhelpWorkMainContainer
   box-sizing: border-box
-  width: 100%
+  max-width: 100%
   margin-top: 140px
   margin-bottom: 30px
+  
   .flexContainer
     display: flex
     flex-direction: row
     width: inherit
     margin: 0 auto
+   
     .textAndVideoHowDoesSquadhelpWork
       width: 60%
       display: flex
@@ -17,6 +19,9 @@
       font-family: Poppins, Helvetica, Arial, sans-serif
       margin: 0 auto
       padding: 0 15px
+      @media screen and ( max-width: 1024px )
+        padding-top: 40px
+        
       .raitingSpan
         font-size: 11px
         text-align: center
@@ -52,4 +57,11 @@
           padding-top: 3px
         & svg
           padding-right: 10px
+  .imgConteiner
+    margin-right: 60px
+    @media screen and ( max-width: 1024px )
+      margin-right: 10px
+      
+    
+      
 

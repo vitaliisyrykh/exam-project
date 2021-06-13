@@ -6,6 +6,7 @@
    flex-direction: column
    align-items: center
    font-family: Poppins, Helvetica, Arial, sans-serif
+  
    .heading
      display: flex
      flex-direction: column
@@ -35,6 +36,7 @@
      
      .imgContainer
        min-width: 50%
+       padding-top: 35px
      .discriptionListContainer
        min-width: 50%
        position: relative
@@ -48,6 +50,9 @@
              transform-origin: 0% 0%
              top: 90px
              left: 6px
+             @media screen and ( max-width: 1024px )
+               width: 574px
+               
 
          .discriptionItemContainer
           padding:  15px 0px 15px 60px

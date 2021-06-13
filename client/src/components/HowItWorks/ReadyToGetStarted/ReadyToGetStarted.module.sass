@@ -3,7 +3,7 @@
   background: rgb(42,46,152);
   background: linear-gradient(90deg, rgba(42,46,152,1) 0%, rgba(33,105,205,1) 57%, rgba(50,154,247,1) 100%);
   font-family: Poppins, Helvetica, Arial, sans-serif
-  width: 100%
+  max-width: 100%
   .containerGetStarted
     display: flex
     flex-direction: column
@@ -53,6 +53,8 @@
     transform-origin: 0% 0%
     top: 105px
     left: 775px
+    @media screen and ( max-width: 1024px )
+      left: 520px
   &::before
       content: ''
       position: absolute
@@ -62,6 +64,9 @@
       transform-origin: 0% 0%
       top: 105px
       left: 375px
+      @media screen and ( max-width: 1024px )
+        left: 250px
+        
   .progress
     display: flex
     flex-direction: column
