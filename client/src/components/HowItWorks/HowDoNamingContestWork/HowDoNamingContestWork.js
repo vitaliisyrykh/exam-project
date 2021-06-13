@@ -1,18 +1,17 @@
 import React from 'react';
 import styles from './HowDoNamingContestWorks.module.sass';
+import CONSTANTS from '../../../constants';
 
 const HowDoNamingContestWork = () => {
   return (
     <section className={styles.howDoNamingContestWorkContainer}>
       <div className={styles.heading}>
-        <span className={styles.headingText}>Our Services</span>
-        <h3 className={styles.heading}>3 Ways To Use Squadhelp</h3>
-        <span className={styles.headingDiscription}>
-          Squadhelp offers 3 ways to get you a perfect name for your business.
-        </span>
+        <img src={`${CONSTANTS.STATIC_IMAGES_PATH}HowItWorksPageImg/cup.png`}/>
+        <h3 className={styles.heading}>How Do Naming Contests Work?</h3>
       </div>
       <div className={styles.contentContainer}>
         <div className={styles.imgContainer}>
+          <img src={`${CONSTANTS.STATIC_IMAGES_PATH}HowItWorksPageImg/tableHuman.png`}/>
         </div>
         <div className={styles.discriptionListContainer}>
           <ul className={styles.discriptionList}>

@@ -21,7 +21,7 @@ const HowDoesSquadhelpWork = props => {
             <span>Play Video</span>
           </button>
         </article>
-        <div className='imgContainer'>
+        <div className={styles.imgConteiner}>
           <img src={`${CONSTANTS.STATIC_IMAGES_PATH}HowItWorksPageImg/cmi_4abbf04a.png`}/>
         </div>
       </div>
