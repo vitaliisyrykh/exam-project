@@ -33,10 +33,15 @@
    .contentContainer
      display: flex
      flex-direction: row
+     @media screen and ( max-width: 768px )
+       flex-direction: column-reverse
      
      .imgContainer
        min-width: 50%
        padding-top: 35px
+       margin-left: 70px
+       @media screen and ( max-width: 768px )
+         margin-left: 120px
      .discriptionListContainer
        min-width: 50%
        position: relative
@@ -52,6 +57,9 @@
              left: 6px
              @media screen and ( max-width: 1024px )
                width: 574px
+             @media screen and ( max-width: 768px )
+                width: 548px
+                 
                
 
          .discriptionItemContainer

@@ -5,6 +5,8 @@
   display: flex
   justify-content: space-between
   font-family: Poppins, Helvetica, Arial, sans-serif
+  @media screen and ( max-width: 768px )
+    margin: 0 auto
   .text
     font-size: 28px
     line-height: 42px
@@ -17,7 +19,8 @@
     border-top: 1px solid rgb(231,234 , 243)
     @media screen and ( max-width: 1024px )
       margin-left: 50px
-      
+    @media screen and ( max-width: 768px )
+      margin: 0
     .imgLink
       padding: 15px
       img

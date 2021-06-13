@@ -4,6 +4,10 @@
   font-family: Poppins, Helvetica, Arial, sans-serif
   margin: 0 142px
   max-width: 100%
+  @media screen and ( max-width: 768px )
+    flex-direction: column
+    margin: 0 auto
+    
   
     
   .quastionsContainer
@@ -14,6 +18,9 @@
     background-color: #377dff
     color: white
     text-align: left
+    @media screen and ( max-width: 768px )
+      min-width: 630px
+      margin: 0 auto
 
     .headingQuastions
       font-size: 32px
@@ -66,7 +73,9 @@
     padding: 64px
     box-shadow: rgba(55,125,255,0.35) 0px 4px 11px 0px
     margin: 6px 0px 6px 0px
-
+    @media screen and ( max-width: 769px )
+      margin: 0 auto
+      max-width: 630px
     .articleContainer
       display: flex
       justify-content: space-evenly

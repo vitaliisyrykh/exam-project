@@ -1,9 +1,9 @@
 .mainContainerGetStarted
   box-sizing: border-box
-  background: rgb(42,46,152);
-  background: linear-gradient(90deg, rgba(42,46,152,1) 0%, rgba(33,105,205,1) 57%, rgba(50,154,247,1) 100%);
+  background: rgb(42,46,152)
+  background: linear-gradient(90deg, rgba(42,46,152,1) 0%, rgba(33,105,205,1) 57%, rgba(50,154,247,1) 100%)
   font-family: Poppins, Helvetica, Arial, sans-serif
-  max-width: 100%
+  min-width: 100%
   .containerGetStarted
     display: flex
     flex-direction: column
@@ -25,7 +25,7 @@
     .btnStartContest
       font-size: 16px
       font-weight: 650
-      line-height: 24px  
+      line-height: 24px
       text-align: center
       border-radius: 5px
       padding: 12px 16px
@@ -33,21 +33,23 @@
       background-color: #ffffff
       border: 1px solid transparent
       &:hover
-        box-shadow:  rgba(255, 255, 255, 0.438) 0px 4px 11px 0px
+        box-shadow: rgba(255, 255, 255, 0.438) 0px 4px 11px 0px
         transition: all 0.2s ease-in-out
-        transform: translateY(-2px)  
-           
+        transform: translateY(-2px)
+
 .progressContainer
   display: flex
+  position: relative
   flex-direction: row
   justify-content: space-around
   margin: 0px 142px
   padding: 64px 15px
-  position: relative
+  @media screen and ( max-width: 768px )
+    margin: 0 auto
   &::after
     content: ''
     position: absolute
-    border-top: 1px solid  rgb(231,234 , 243)
+    border-top: 1px solid rgb(231,234 , 243)
     width: 100px
     transform: rotate(100deg)
     transform-origin: 0% 0%
@@ -55,18 +57,22 @@
     left: 775px
     @media screen and ( max-width: 1024px )
       left: 520px
+    @media screen and ( max-width: 768px )
+      left: 510px
+      width: 70px
   &::before
-      content: ''
-      position: absolute
-      border-top: 1px solid  rgb(231,234 , 243)
-      width: 100px
-      transform: rotate(100deg)
-      transform-origin: 0% 0%
-      top: 105px
-      left: 375px
-      @media screen and ( max-width: 1024px )
-        left: 250px
-        
+    content: ''
+    position: absolute
+    border-top: 1px solid rgb(231,234 , 243)
+    width: 100px
+    transform: rotate(100deg)
+    transform-origin: 0% 0%
+    top: 105px
+    left: 375px
+    @media screen and ( max-width: 1024px )
+      left: 250px
+    @media screen and ( max-width: 768px )
+      width: 70px
   .progress
     display: flex
     flex-direction: column
@@ -75,13 +81,18 @@
     padding: 0px 48px
     font-family: Poppins, Helvetica, Arial, sans-serif
     width: 33.3%
-    
+    @media screen and ( max-width: 768px )
+      padding: 0 10px
+
     img
       width: 77px
       height: 77px
       margin-top: 5px
       &.modifImg
         margin-top: 15px
+        @media screen and ( max-width: 768px )
+          margin-top: 20px
+          padding-top: 10px
     p
       font-size: 16px
       line-height: 24px
@@ -92,5 +103,3 @@
         padding-top: 20px
       span
         color: #1e2022
-      
-              
