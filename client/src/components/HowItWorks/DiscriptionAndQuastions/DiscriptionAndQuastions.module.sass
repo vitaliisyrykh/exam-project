@@ -2,17 +2,13 @@
   box-sizing: border-box
   display: flex
   font-family: Poppins, Helvetica, Arial, sans-serif
-  margin: 0 142px
-  width: 100%
+  margin: 0 auto
+  max-width: 100%
 
   @media screen and ( max-width: 768px )
     flex-direction: column
     margin: 0 auto
- 
-  
-    
-  
-    
+
   .quastionsContainer
     display: flex
     flex-direction: column
@@ -24,7 +20,6 @@
     @media screen and ( max-width: 768px )
       max-width: 630px
       margin: 0 auto
-    
 
     .headingQuastions
       font-size: 32px
@@ -71,7 +66,7 @@
 
   .containerDiscription
     display: flex
-    width: 100%
+    max-width: 100%
     flex-direction: column
     flex-wrap: nowrap
     padding: 64px
@@ -79,8 +74,10 @@
     margin: 6px 0px 6px 0px
     @media screen and ( max-width: 769px )
       margin: 0 auto
-      
-    
+    @media screen and ( max-width: 426px)
+      max-width: 100%
+      padding: 30px
+
     .articleContainer
       display: flex
       justify-content: space-evenly
@@ -88,7 +85,6 @@
       &:nth-child(even)
         border-top: 1px solid rgb(231,234 , 243)
         padding-top: 30px
-        
 
       .arrowContainer
         border-radius: 50%
