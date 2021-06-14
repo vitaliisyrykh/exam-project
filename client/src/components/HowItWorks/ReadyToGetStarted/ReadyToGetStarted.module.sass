@@ -1,14 +1,21 @@
-.mainContainerGetStarted
+section
   box-sizing: border-box
-  background: rgb(42,46,152)
-  background: linear-gradient(90deg, rgba(42,46,152,1) 0%, rgba(33,105,205,1) 57%, rgba(50,154,247,1) 100%)
-  font-family: Poppins, Helvetica, Arial, sans-serif
-  min-width: 100%
+  max-width: 100%
+  .mainContainerGetStarted
+    box-sizing: border-box
+    background: rgb(42,46,152)
+    background: linear-gradient(90deg, rgba(42,46,152,1) 0%, rgba(33,105,205,1) 57%, rgba(50,154,247,1) 100%)
+    font-family: Poppins, Helvetica, Arial, sans-serif
+    max-width: 100%
+  @media screen and (max-width: 425px)
+    max-width: 380px
+    margin: 0
+
   .containerGetStarted
     display: flex
     flex-direction: column
     align-items: center
-    margin: 0px 142px
+    margin: 0px auto
     padding: 32px 15px
     .headingGetStarted
       margin-bottom: 8px
@@ -46,6 +53,12 @@
   padding: 64px 15px
   @media screen and ( max-width: 768px )
     margin: 0 auto
+  @media screen and (max-width: 425px)
+    flex-direction: column
+    max-width: 380px
+    margin: 0
+    align-items: center
+    
   &::after
     content: ''
     position: absolute
@@ -60,6 +73,8 @@
     @media screen and ( max-width: 768px )
       left: 510px
       width: 70px
+    @media screen and (max-width: 425px)
+      display: none  
   &::before
     content: ''
     position: absolute
@@ -73,6 +88,8 @@
       left: 250px
     @media screen and ( max-width: 768px )
       width: 70px
+    @media screen and (max-width: 425px)
+      display: none    
   .progress
     display: flex
     flex-direction: column
@@ -83,7 +100,10 @@
     width: 33.3%
     @media screen and ( max-width: 768px )
       padding: 0 10px
-
+    @media screen and (max-width: 425px)
+      text-align: justify
+      justify-content: stretch
+      margin: 20px 0
     img
       width: 77px
       height: 77px
@@ -93,12 +113,17 @@
         @media screen and ( max-width: 768px )
           margin-top: 20px
           padding-top: 10px
+        @media screen and (max-width: 425px)
+          margin-top: 0px  
     p
       font-size: 16px
       line-height: 24px
       text-align: center
       color: #77838f
       padding-top: 10px
+      @media screen and (max-width: 425px)
+        min-width: 300px
+
       &.modif
         padding-top: 20px
       span

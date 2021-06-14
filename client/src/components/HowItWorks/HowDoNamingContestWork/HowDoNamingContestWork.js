@@ -11,7 +11,7 @@ const HowDoNamingContestWork = () => {
       </div>
       <div className={styles.contentContainer}>
         <div className={styles.imgContainer}>
-          <img src={`${CONSTANTS.STATIC_IMAGES_PATH}HowItWorksPageImg/tableHuman.png`}/>
+          <img src={`${CONSTANTS.STATIC_IMAGES_PATH}HowItWorksPageImg/tableHuman.png`} className={styles.img}/>
         </div>
         <div className={styles.discriptionListContainer}>
           <ul className={styles.discriptionList}>

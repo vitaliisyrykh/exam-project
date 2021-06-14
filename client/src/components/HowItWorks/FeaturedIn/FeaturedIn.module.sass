@@ -7,12 +7,16 @@
   font-family: Poppins, Helvetica, Arial, sans-serif
   @media screen and ( max-width: 768px )
     margin: 0 auto
+  @media screen and (max-width: 425px)
+    flex-direction: column  
   .text
     font-size: 28px
     line-height: 42px
     font-weight: 500
     margin-left: 20px
     white-space: nowrap
+    @media screen and (max-width: 425px)
+      padding-top: 20px 
   .imgContainer
     display: flex
     margin-left: 350px
@@ -21,6 +25,9 @@
       margin-left: 50px
     @media screen and ( max-width: 768px )
       margin: 0
+    @media screen and ( max-width: 425px)
+      flex-wrap: wrap
+      margin-top: 20px  
     .imgLink
       padding: 15px
       img

@@ -4,7 +4,7 @@ import styles from './ReadyToGetStarted.module.sass';
 
 const ReadyToGetStarted = props => {
   return (
-    <section>
+    <section >
       <div className={styles.mainContainerGetStarted}>
         <div className={styles.containerGetStarted}>
           <h3 className={styles.headingGetStarted}>Ready To Get Started</h3>
