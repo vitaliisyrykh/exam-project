@@ -94,6 +94,7 @@ class Header extends React.Component{
                                         <li><a href="http://www.google.com">AGENCY SERVICE</a></li>
                                         <li><a href="http://www.google.com">ACTIVE CONTESTS</a></li>
                                         <li><a href="http://www.google.com">WINNERS</a></li>
+                                        <li><Link to='/events'>EVENTS</Link></li>
                                         <li><a href="http://www.google.com">LEADERBOARD</a></li>
                                         <li className={styles.last}><a href="http://www.google.com">BECOME A
                                             CREATIVE</a></li>
