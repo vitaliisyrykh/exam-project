@@ -21,6 +21,7 @@ import { requestAuthRefresh } from './actions/actionCreator'
 import constants from './constants'
 import PrivateRoute from './components/PrivateRoute/PrivateRoute'
 import HowItWork from './'
+import EventsPage from './pages/EventsPage/EventsPage'
 
 function App () {
   const dispatch = useDispatch()
@@ -111,10 +112,11 @@ function App () {
           path='/account'
           component={UserProfile}
         />
-        <Route
+        <PrivateRoute 
+          roles={['customer']}
           exact
-          path='/howitworks'
-          component ={}
+          path='/events'
+          component={EventsPage}
         />
       </Switch>
       <ChatContainer />
